@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react'
 import axios from 'axios'
 
+
 const Manageemployees = () => {
     const [input, setinput] = useState({});
     const [employees, setemployees] = useState([]);
@@ -10,7 +11,7 @@ const Manageemployees = () => {
     const [id, setid] = useState();
 
     const fetchEmployees = async () => {
-        await axios.get("https://express-api-three.vercel.app/").then(res => {
+        await axios.get("http://localhost:5000").then(res => {
             setemployees(res.data);
         }
         ).catch(err => {
@@ -22,7 +23,7 @@ const Manageemployees = () => {
     }
     const handleSubmit = async () => {
         try {
-            await axios.post("https://express-api-three.vercel.app/", input)
+            await axios.post("http://localhost:5000", input)
             console.log(input);
         } catch (err) {
             console.log(err);
@@ -33,11 +34,12 @@ const Manageemployees = () => {
     }, []) 
 
     const handleDelete = async (id) => {
-        await axios.delete("https://express-api-three.vercel.app/"+id).then(
+        await axios.delete("http://localhost:5000/"+id).then(
             res => console.log(res)
             ).catch((err) => {
                 console.log(err);
             });
+            console.log(id);
             window.location.reload();
     }
 
@@ -49,7 +51,7 @@ const Manageemployees = () => {
     }
 
     const handlesave = async (e) => {
-        await axios.put("https://express-api-three.vercel.app/"+id, input).then(
+        await axios.put("http://localhost:5000/"+id, input).then(
             res => console.log(res)
         ).catch((err) => {
             console.log(err);
