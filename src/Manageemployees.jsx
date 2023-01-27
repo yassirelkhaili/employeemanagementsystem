@@ -11,7 +11,7 @@ const Manageemployees = () => {
 
   const fetchEmployees = async () => {
     await axios
-      .get(process.env.REACT_APP_API_URL1)
+      .get("https://express-api-three.vercel.app")
       .then((res) => {
         setemployees(res.data);
       })
@@ -25,7 +25,7 @@ const Manageemployees = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(process.env.REACT_APP_API_URL1, input);
+      await axios.post("https://express-api-three.vercel.app", input);
       console.log(input);
     } catch (err) {
       console.log(err);
@@ -38,7 +38,7 @@ const Manageemployees = () => {
 
   const handleDelete = async (id) => {
     await axios
-      .delete(process.env.REACT_APP_API_URL2 + id)
+      .delete("https://express-api-three.vercel.app/" + id)
       .then((res) => console.log(res))
       .catch((err) => {
         console.log(err);
@@ -57,7 +57,7 @@ const Manageemployees = () => {
   const handlesave = async (e) => {
     e.preventDefault();
     await axios
-      .put(process.env.REACT_APP_API_URL2 + id, input)
+      .put("https://express-api-three.vercel.app/" + id, input)
       .then((res) => console.log(res))
       .catch((err) => {
         console.log(err);
