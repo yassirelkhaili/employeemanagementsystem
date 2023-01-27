@@ -22,13 +22,15 @@ const Manageemployees = () => {
   const handleChange = (e) => {
     setinput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       await axios.post(process.env.REACT_APP_API_URL1, input);
       console.log(input);
     } catch (err) {
       console.log(err);
     }
+    window.location.reload();
   };
   useEffect(() => {
     fetchEmployees();
@@ -53,12 +55,14 @@ const Manageemployees = () => {
   };
 
   const handlesave = async (e) => {
+    e.preventDefault();
     await axios
       .put(process.env.REACT_APP_API_URL2 + id, input)
       .then((res) => console.log(res))
       .catch((err) => {
         console.log(err);
       });
+      window.location.reload();
   };
   return (
     <>
