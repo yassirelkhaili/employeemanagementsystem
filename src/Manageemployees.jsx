@@ -10,7 +10,7 @@ const Manageemployees = () => {
     const [id, setid] = useState();
 
     const fetchEmployees = async () => {
-        await axios.get("http://localhost:8000/").then(res => {
+        await axios.get("https://express-api-three.vercel.app/").then(res => {
             setemployees(res.data);
         }
         ).catch(err => {
@@ -22,7 +22,7 @@ const Manageemployees = () => {
     }
     const handleSubmit = async () => {
         try {
-            await axios.post("http://localhost:8000/", input)
+            await axios.post("https://express-api-three.vercel.app/", input)
             console.log(input);
         } catch (err) {
             console.log(err);
@@ -33,7 +33,7 @@ const Manageemployees = () => {
     }, []) 
 
     const handleDelete = async (id) => {
-        await axios.delete("http://localhost:8000/"+id).then(
+        await axios.delete("https://express-api-three.vercel.app/"+id).then(
             res => console.log(res)
             ).catch((err) => {
                 console.log(err);
@@ -49,7 +49,7 @@ const Manageemployees = () => {
     }
 
     const handlesave = async (e) => {
-        await axios.put("http://localhost:8000/"+id, input).then(
+        await axios.put("https://express-api-three.vercel.app/"+id, input).then(
             res => console.log(res)
         ).catch((err) => {
             console.log(err);
