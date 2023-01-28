@@ -20,7 +20,7 @@ const Manageemployees = () => {
       });
   };
   const handleChange = (e) => {
-    setinput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setinput((prev) => ({...prev, [e.target.name]: e.target.value }));
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,7 +43,6 @@ const Manageemployees = () => {
       .catch((err) => {
         console.log(err);
       });
-    console.log(id);
     window.location.reload();
   };
 
@@ -58,7 +57,9 @@ const Manageemployees = () => {
     e.preventDefault();
     await axios
       .put("https://express-api-three.vercel.app/" + id, input)
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res);
+      })
       .catch((err) => {
         console.log(err);
       });
@@ -69,46 +70,11 @@ const Manageemployees = () => {
       <div className="container-fluid bg-dark" ref={addform}>
         <form className="addemployee">
           <div className="form-input">
-            <input
-              className="form-control"
-              type="text"
-              name="fname"
-              placeholder="Firstname:"
-              onChange={handleChange}
-              required
-            />
-            <input
-              className="form-control"
-              type="text"
-              name="lname"
-              placeholder="Lastname:"
-              onChange={handleChange}
-              required
-            />
-            <input
-              className="form-control"
-              type="text"
-              name="age"
-              placeholder="Age:"
-              onChange={handleChange}
-              required
-            />
-            <input
-              className="form-control"
-              type="text"
-              name="pos"
-              placeholder="Position:"
-              onChange={handleChange}
-              required
-            />
-            <input
-              className="form-control"
-              type="text"
-              name="email"
-              placeholder="Email:"
-              onChange={handleChange}
-              required
-            />
+            <input className="form-control" type="text" name="fname" placeholder="Firstname:" onChange={handleChange} required/>
+            <input className="form-control" type="text" name="lname" placeholder="Lastname:" onChange={handleChange} required/>
+            <input className="form-control" type="text" name="age" placeholder="Age:" onChange={handleChange} required/>
+            <input className="form-control" type="text" name="pos" placeholder="Position:" onChange={handleChange} required/>
+            <input className="form-control" type="text" name="email" placeholder="Email:" onChange={handleChange} required/>
           </div>
           <div className="form-submit">
             <button className="btn btn-primary" id="add" onClick={handleSubmit}>
@@ -183,54 +149,12 @@ const Manageemployees = () => {
         <div className="container" ref={editform} style={{ display: "none" }}>
           <form className="edit-form">
             <div className="edit-form-input">
-              <input
-                className="form-control"
-                type="text"
-                name="fname"
-                placeholder="Firstname:"
-                onChange={handleChange}
-                required
-              />
-              <input
-                className="form-control"
-                type="text"
-                name="lname"
-                placeholder="Lastname:"
-                onChange={handleChange}
-                required
-              />
-              <input
-                className="form-control"
-                type="text"
-                name="age"
-                placeholder="Age:"
-                onChange={handleChange}
-                required
-              />
-              <input
-                className="form-control"
-                type="text"
-                name="pos"
-                placeholder="Position:"
-                onChange={handleChange}
-                required
-              />
-              <input
-                className="form-control"
-                type="text"
-                name="email"
-                placeholder="Email:"
-                onChange={handleChange}
-                required
-              />
-              <button
-                className="btn btn-primary"
-                id="save"
-                type="submit"
-                onClick={handlesave}
-              >
-                Save changes
-              </button>
+              <input className="form-control" type="text" name="fname" placeholder="Firstname:" onChange={handleChange} required/>
+              <input className="form-control" type="text" name="lname" placeholder="Lastname:" onChange={handleChange} required/>
+              <input className="form-control" type="text" name="age" placeholder="Age:" onChange={handleChange} required/>
+              <input className="form-control" type="text" name="pos" placeholder="Position:" onChange={handleChange} required/>
+              <input className="form-control" type="text" name="email" placeholder="Email:" onChange={handleChange} required/>
+              <button className="btn btn-primary" id="save" type="submit" onClick={handlesave}>Save changes</button>
             </div>
           </form>
         </div>
